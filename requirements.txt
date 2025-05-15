@@ -1,0 +1,14 @@
+streamlit
+langchain
+faiss-cpu
+openai
+python-dotenv
+PyMuPDF
+sentence-transformers
+langchain-community
+sentence_transformers
+langchain-openai
+langchain_groq
+pypdf
+pyttsx3
+# faiss-gpu
