@@ -120,6 +120,13 @@ def speak_text(text):
     </html>
     """, height=0)
 
+def stop_speaking():
+    st.components.v1.html("""
+    <script>
+        window.speechSynthesis.cancel();
+    </script>
+    """, height=0)
+
 # ---------------------------- Q&A Execution ----------------------------
 if query and qa_chain:
     response = qa_chain(query)
@@ -132,11 +139,15 @@ if query and qa_chain:
         st.write(general_response)
         if st.button("🔊 Speak Answer"):
             speak_text(general_response)
+        if st.button("🛑 Stop Speaking"):
+            stop_speaking()
     else:
         st.markdown("### 📌 Answer:")
         st.write(response["result"])
         if st.button("🔊 Speak Answer"):
             speak_text(response["result"])
+        if st.button("🛑 Stop Speaking"):
+            stop_speaking()
 
         st.markdown("### 📄 Source Documents:")
         for i, doc in enumerate(response["source_documents"]):
